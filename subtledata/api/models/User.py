@@ -21,38 +21,17 @@ class User:
 
     def __init__(self):
         self.swaggerTypes = {
-            'first_name': 'str',
-            'last_name': 'str',
-            'middle_name': 'str',
-            'dob': 'str',
-            'email_address': 'str',
-            'last_known_lon': 'float',
-            'last_known_lat': 'float',
+            'user_guid': 'str',
             'user_id': 'int',
-            'cell_phone': 'str',
-            'user_name': 'str'
+            'device_id': 'int'
 
         }
 
 
-        #First Name
-        self.first_name = None # str
-        #Last Name
-        self.last_name = None # str
-        #Middle Name
-        self.middle_name = None # str
-        #Date of Birth
-        self.dob = None # str
-        #Email Address
-        self.email_address = None # str
-        #Last Known Longitude
-        self.last_known_lon = None # float
-        #Last Known Latitude
-        self.last_known_lat = None # float
+        #Device Identifier
+        self.user_guid = None # str
         #User ID
         self.user_id = None # int
-        #Cell Phone
-        self.cell_phone = None # str
-        #User Name
-        self.user_name = None # str
+        #Device Identifier
+        self.device_id = None # int
         

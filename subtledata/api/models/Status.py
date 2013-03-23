@@ -21,6 +21,7 @@ class Status:
 
     def __init__(self):
         self.swaggerTypes = {
+            'card_id': 'str',
             'result': 'str',
             'success': 'bool',
             'error': 'str'
@@ -28,6 +29,8 @@ class Status:
         }
 
 
+        #New Card ID
+        self.card_id = None # str
         #Result Status
         self.result = None # str
         #Call was successful

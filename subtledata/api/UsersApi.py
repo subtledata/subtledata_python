@@ -29,6 +29,46 @@ class UsersApi(object):
       self.apiClient = apiClient
 
     
+    def createUser(self, api_key, body, **kwargs):
+        """Create a user
+
+        Args:
+            api_key, str: Subtledata API Key (required)
+            body, NewUser: New User Object (required)
+            
+        Returns: User
+        """
+
+        allParams = ['api_key', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method createUser" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/users'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'User')
+        return responseObject
+        
+        
     def getUser(self, user_id, api_key, **kwargs):
         """Get a user by ID
 
@@ -211,34 +251,38 @@ class UsersApi(object):
         return responseObject
         
         
-    def createUser(self, api_key, body, **kwargs):
-        """Create a user
+    def getUsersCards(self, user_id, api_key, **kwargs):
+        """Get a list of stored cards for a user
 
         Args:
+            user_id, int: SubtleData User ID (required)
             api_key, str: Subtledata API Key (required)
-            body, NewUser: New User Object (required)
             
-        Returns: User
+        Returns: list[Card]
         """
 
-        allParams = ['api_key', 'body']
+        allParams = ['user_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
             if key not in allParams:
-                raise TypeError("Got an unexpected keyword argument '%s' to method createUser" % key)
+                raise TypeError("Got an unexpected keyword argument '%s' to method getUsersCards" % key)
             params[key] = val
         del params['kwargs']
 
-        resourcePath = '/users'
+        resourcePath = '/users/{user_id}/cards'
         resourcePath = resourcePath.replace('{format}', 'json')
-        method = 'POST'
+        method = 'GET'
 
         queryParams = {}
         headerParams = {}
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('user_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['user_id']))
+            resourcePath = resourcePath.replace('{' + 'user_id' + '}',
+                                                replacement)
         postData = (params['body'] if 'body' in params else None)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
@@ -247,7 +291,52 @@ class UsersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'User')
+        responseObject = self.apiClient.deserialize(response, 'list[Card]')
+        return responseObject
+        
+        
+    def createCardForUser(self, user_id, api_key, body, **kwargs):
+        """Create a card for a user
+
+        Args:
+            user_id, int: SubtleData User ID (required)
+            api_key, str: Subtledata API Key (required)
+            body, NewCard: New Card Object (required)
+            
+        Returns: CardStatus
+        """
+
+        allParams = ['user_id', 'api_key', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method createCardForUser" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/users/{user_id}/cards'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('user_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['user_id']))
+            resourcePath = resourcePath.replace('{' + 'user_id' + '}',
+                                                replacement)
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'CardStatus')
         return responseObject
         
         
