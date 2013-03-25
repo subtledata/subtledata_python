@@ -33,7 +33,7 @@ class Terminal:
 
         #Terminal Revenue Center name
         self.revenue_center_name = None # str
-        #Is the default terminal
+        #Is the standard terminal
         self.default_device = None # bool
         #Terminal ID Number
         self.terminal_id = None # int
