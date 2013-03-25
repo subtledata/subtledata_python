@@ -48,7 +48,6 @@ from base_types import SDFirstClassObject
 from sd_collections_locations import SDLocationCollection
 from sd_collections_users import SDUserCollection
 from sd_collections_general import SDGeneralInterface
-from sd_collections_tickets import SDTicketCollection
 
 
 class SubtleData(object):
@@ -65,5 +64,4 @@ class SubtleData(object):
 
         self.Locations = SDLocationCollection(self)
         self.Users = SDUserCollection(self)
-        self.Tickets = SDTicketCollection(self)
         self.General = SDGeneralInterface(self)

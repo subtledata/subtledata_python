@@ -4,7 +4,7 @@ import sure
 from sure import it, this, those, these
 import unittest
 from subtledata import SubtleData
-from api import swagger
+from subtledata.api import swagger
 
 from subtledata import sd_collections_general, sd_collections_tickets, sd_collections_locations, sd_collections_users
 
@@ -110,4 +110,5 @@ class SDLocationTests(SDTestCase):
     def test_fetching_ticket(self):
         this(self.Location.tickets.get_with_pos_id(9876)).should.be.an(sd_ticket.SDTicket)
 
-    def test_create_tickets9
+    def test_create_tickets(self):
+        pass
