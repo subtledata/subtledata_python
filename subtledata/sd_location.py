@@ -3,6 +3,7 @@ __author__ = 'gsibble'
 from base_types import  SDFirstClassObject
 from sd_menu import SDMenu
 from sd_table import SDTable
+from sd_collections_tables import SDTableCollection
 
 class SDLocation(SDFirstClassObject):
 
@@ -20,10 +21,10 @@ class SDLocation(SDFirstClassObject):
 
         self._swagger_tables = self._swagger_locations_api.getTableList(location_id=location_id, api_key=self._api_key)
 
-        print self._swagger_tables
-
         #Set the tables to be our type
-        self.tables = [SDTable(self, table) for table in self._swagger_tables]
+        table_list = [SDTable(self, table) for table in self._swagger_tables]
+
+        self.tables = SDTableCollection(tables=table_list, parent=self)
 
         if include_menu:
             self.update_menu(use_cache)
