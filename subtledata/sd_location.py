@@ -18,8 +18,12 @@ class SDLocation(SDFirstClassObject):
         for attribute in self._swagger_location.swaggerTypes:
             self.__setattr__(attribute, getattr(self._swagger_location, attribute))
 
+        self._swagger_tables = self._swagger_locations_api.getTableList(location_id=location_id, api_key=self._api_key)
+
+        print self._swagger_tables
+
         #Set the tables to be our type
-        self.tables = [SDTable(self, table) for table in self.tables]
+        self.tables = [SDTable(self, table) for table in self._swagger_tables]
 
         if include_menu:
             self.update_menu(use_cache)
