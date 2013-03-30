@@ -27,7 +27,6 @@ class Location:
             'menu_ordering_available': 'bool',
             'payment_via_credit_card_available_message': 'str',
             'postal_code': 'str',
-            'Latitude': 'float',
             'location_id': 'int',
             'app_specials': 'bool',
             'user_rating': 'str',
@@ -37,6 +36,7 @@ class Location:
             'table_number_instructions': 'str',
             'state': 'str',
             'color_theme': 'int',
+            'latitude': 'float',
             'logo_url': 'str',
             'website_url': 'str',
             'revenue_centers': 'list[RevenueCenter]',
@@ -69,8 +69,6 @@ class Location:
         self.payment_via_credit_card_available_message = None # str
         #Address Postal Code
         self.postal_code = None # str
-        #Location Latitude
-        self.Latitude = None # float
         #Location ID
         self.location_id = None # int
         #Specials available through app
@@ -88,6 +86,8 @@ class Location:
         self.state = None # str
         #Color Theme
         self.color_theme = None # int
+        #Location Latitude
+        self.latitude = None # float
         #Logo URL
         self.logo_url = None # str
         #Website URL

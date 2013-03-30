@@ -22,51 +22,52 @@ class Ticket:
     def __init__(self):
         self.swaggerTypes = {
             'employee_id': 'int',
-            'user_id': 'int',
-            'number_of_guests': 'int',
+            'ticket_open': 'bool',
             'items': 'list[Item]',
             'tax': 'float',
+            'table_id': 'int',
             'discount': 'float',
             'pos_ticket_id': 'int',
             'remaining_balance': 'float',
-            'table_id': 'int',
-            'ticket_id': 'int',
-            'date_opened': 'str',
             'table_name': 'str',
+            'ticket_id': 'int',
+            'connected_users': 'list[ConnectedUser]',
+            'user_id': 'int',
             'total': 'float',
             'subtotal': 'float',
-            'service_charge': 'float'
+            'service_charge': 'float',
+            'payments': 'list[Payment]'
 
         }
 
 
         #Employee ID
         self.employee_id = None # int
-        #User ID
-        self.user_id = None # int
-        #Number of guests on ticket
-        self.number_of_guests = None # int
+        #Ticket open/closed status
+        self.ticket_open = None # bool
         self.items = None # list[Item]
         #Tax amount
         self.tax = None # float
+        #Table ID
+        self.table_id = None # int
         #Discount amount
         self.discount = None # float
         #POS System Ticket Identifier
         self.pos_ticket_id = None # int
         #Ticket remaining balance
         self.remaining_balance = None # float
-        #Table ID
-        self.table_id = None # int
-        #Ticket ID
-        self.ticket_id = None # int
-        #Date/Time Ticket Opened
-        self.date_opened = None # str
         #Table Name
         self.table_name = None # str
+        #Ticket ID
+        self.ticket_id = None # int
+        self.connected_users = None # list[ConnectedUser]
+        #User ID
+        self.user_id = None # int
         #Total amount
         self.total = None # float
         #Subtotal amount
         self.subtotal = None # float
         #Service charge
         self.service_charge = None # float
+        self.payments = None # list[Payment]
         

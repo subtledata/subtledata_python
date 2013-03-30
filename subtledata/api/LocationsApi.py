@@ -82,7 +82,7 @@ class LocationsApi(object):
             debug, bool: Internal Use Only (optional)
             body, NewTicket: New Ticket Object (required)
             
-        Returns: TicketStatus
+        Returns: NewLocationStatus
         """
 
         allParams = ['api_key', 'debug', 'body']
@@ -113,7 +113,7 @@ class LocationsApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'TicketStatus')
+        responseObject = self.apiClient.deserialize(response, 'NewLocationStatus')
         return responseObject
         
         
@@ -519,7 +519,7 @@ class LocationsApi(object):
             api_key, str: Subtledata API Key (required)
             debug, bool: Internal Use Only (optional)
             
-        Returns: TableDetails
+        Returns: Table
         """
 
         allParams = ['location_id', 'table_id', 'api_key', 'debug']
@@ -558,7 +558,7 @@ class LocationsApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'TableDetails')
+        responseObject = self.apiClient.deserialize(response, 'Table')
         return responseObject
         
         
@@ -669,6 +669,61 @@ class LocationsApi(object):
             return None
 
         responseObject = self.apiClient.deserialize(response, 'Status')
+        return responseObject
+        
+        
+    def getTicketWithPOS_ID(self, location_id, pos_ticket_id, api_key, **kwargs):
+        """Get a ticket by POS ID
+
+        Args:
+            location_id, int: SubtleData Location ID (required)
+            pos_ticket_id, int: SubtleData Location ID (required)
+            api_key, str: Subtledata API Key (required)
+            user_id, int:  (optional)
+            debug, bool: Internal Use Only (optional)
+            
+        Returns: Ticket
+        """
+
+        allParams = ['location_id', 'pos_ticket_id', 'api_key', 'user_id', 'debug']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getTicketWithPOS_ID" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/locations/{location_id}/tickets/pos/{pos_ticket_id}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('user_id' in params):
+            queryParams['user_id'] = self.apiClient.toPathValue(params['user_id'])
+        if ('debug' in params):
+            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
+        if ('location_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['location_id']))
+            resourcePath = resourcePath.replace('{' + 'location_id' + '}',
+                                                replacement)
+        if ('pos_ticket_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['pos_ticket_id']))
+            resourcePath = resourcePath.replace('{' + 'pos_ticket_id' + '}',
+                                                replacement)
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'Ticket')
         return responseObject
         
         
@@ -996,6 +1051,59 @@ class LocationsApi(object):
             return None
 
         responseObject = self.apiClient.deserialize(response, 'PaymentStatus')
+        return responseObject
+        
+        
+    def addExternalPaymentToTicket(self, location_id, ticket_id, api_key, body, **kwargs):
+        """Add an external payment to a ticket
+
+        Args:
+            location_id, int: SubtleData Location ID (required)
+            ticket_id, int: SubtleData Location ID (required)
+            api_key, str: Subtledata API Key (required)
+            debug, bool: Internal Use Only (optional)
+            body, NewExternalPayment: Info used for payment (required)
+            
+        Returns: ExternalPaymentStatus
+        """
+
+        allParams = ['location_id', 'ticket_id', 'api_key', 'debug', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method addExternalPaymentToTicket" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/locations/{location_id}/tickets/{ticket_id}/payments/external'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'PUT'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('debug' in params):
+            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
+        if ('location_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['location_id']))
+            resourcePath = resourcePath.replace('{' + 'location_id' + '}',
+                                                replacement)
+        if ('ticket_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['ticket_id']))
+            resourcePath = resourcePath.replace('{' + 'ticket_id' + '}',
+                                                replacement)
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'ExternalPaymentStatus')
         return responseObject
         
         

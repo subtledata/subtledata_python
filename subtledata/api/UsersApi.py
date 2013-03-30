@@ -216,6 +216,49 @@ class UsersApi(object):
         return responseObject
         
         
+    def authUser(self, api_key, body, **kwargs):
+        """Authenticate a user
+
+        Args:
+            api_key, str: Subtledata API Key (required)
+            debug, bool: Internal Use Only (optional)
+            body, AuthUserRequest: New User Authentication Request (required)
+            
+        Returns: AuthResponse
+        """
+
+        allParams = ['api_key', 'debug', 'body']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method authUser" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/users/authenticate'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'POST'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('debug' in params):
+            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'AuthResponse')
+        return responseObject
+        
+        
     def searchUsersByName(self, user_name, api_key, **kwargs):
         """Search for a user by name
 
@@ -358,6 +401,58 @@ class UsersApi(object):
             return None
 
         responseObject = self.apiClient.deserialize(response, 'CardStatus')
+        return responseObject
+        
+        
+    def deleteUserCreditCard(self, user_id, card_id, api_key, **kwargs):
+        """Delete a user's credit card
+
+        Args:
+            user_id, int: SubtleData User ID (required)
+            card_id, int: SubtleData User ID (required)
+            api_key, str: Subtledata API Key (required)
+            debug, bool: Internal Use Only (optional)
+            
+        Returns: Status
+        """
+
+        allParams = ['user_id', 'card_id', 'api_key', 'debug']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method deleteUserCreditCard" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/users/{user_id}/cards/{card_id}'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'DELETE'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('debug' in params):
+            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
+        if ('user_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['user_id']))
+            resourcePath = resourcePath.replace('{' + 'user_id' + '}',
+                                                replacement)
+        if ('card_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['card_id']))
+            resourcePath = resourcePath.replace('{' + 'card_id' + '}',
+                                                replacement)
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'Status')
         return responseObject
         
         
