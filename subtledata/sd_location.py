@@ -7,27 +7,37 @@ from sd_collections_tables import SDTableCollection
 
 class SDLocation(SDFirstClassObject):
 
-    def __init__(self, parent, location_id, include_menu, use_cache, *args, **kwargs):
+    def __init__(self, parent, location_id, include_menu=False, use_cache=True, fetch=True, initial_data=None, *args, **kwargs):
         super(SDLocation, self).__init__(parent, use_cache)
         self._location_id = location_id
+        self._include_menu = include_menu
 
+        if fetch:
+            self.refresh()
+        else:
+            if initial_data:
+                self._set_attribs(initial_data)
+
+
+    def refresh(self):
         #Get the location via swagger
-        self._swagger_location = self._swagger_locations_api.getLocation(location_id, self._api_key,
+        self._swagger_location = self._swagger_locations_api.getLocation(self._location_id, self._api_key,
                                                                          use_cache=self._use_cache)
 
         #Set attributes of first class Location to match Swagger Location object
-        for attribute in self._swagger_location.swaggerTypes:
-            self.__setattr__(attribute, getattr(self._swagger_location, attribute))
+        self._set_attribs(self._swagger_location)
 
-        self._swagger_tables = self._swagger_locations_api.getTableList(location_id=location_id, api_key=self._api_key)
+        if self._include_menu:
+            self.update_menu(self._use_cache)
+
+    @property
+    def tables(self):
+        self._swagger_tables = self._swagger_locations_api.getTableList(location_id=self._location_id, api_key=self._api_key)
 
         #Set the tables to be our type
         table_list = [SDTable(self, table) for table in self._swagger_tables]
 
-        self.tables = SDTableCollection(tables=table_list, parent=self)
-
-        if include_menu:
-            self.update_menu(use_cache)
+        return SDTableCollection(tables=table_list, parent=self)
 
     def update_menu(self, use_cache=True):
 
@@ -67,3 +77,7 @@ class SDLocation(SDFirstClassObject):
 
         #Return a SDTicket
         pass
+
+    @property
+    def tickets(self):
+        return None

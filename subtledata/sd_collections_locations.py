@@ -11,8 +11,13 @@ class SDLocationCollection(SDFirstClassCollection):
 
     @property
     def all(self):
-        #TODO:  Return all locations
-        return []
+
+
+        #Get all locations via swagger
+        self._swagger_locations = self._swagger_locations_api.getAllLocations(self._api_key, use_cache=self._use_cache)
+
+        return [SDLocation(parent=self, location_id=location.location_id, fetch=False, initial_data=location) for location in self._swagger_locations]
+
 
     def get(self, location_id, use_cache=True, include_menu=False):
         if not self._use_cache:

@@ -30,3 +30,7 @@ class SDFirstClassObject(SDInterface):
         #Override use cache if not already set to False
         if self._use_cache:
             self._use_cache = use_cache
+
+    def _set_attribs(self, swagger_object):
+        for attribute in swagger_object.swaggerTypes:
+            self.__setattr__(attribute, getattr(swagger_object, attribute))
