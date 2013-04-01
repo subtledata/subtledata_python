@@ -42,3 +42,4 @@ class SDTable(SDFirstClassObject):
 
         else:
             return SDTicket(self._api_client, ticket_response.ticket_id, user_id)
+
