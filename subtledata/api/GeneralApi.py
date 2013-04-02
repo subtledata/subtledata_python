@@ -34,13 +34,12 @@ class GeneralApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: list[Country]
         """
 
-        allParams = ['api_key', 'debug', 'use_cache']
+        allParams = ['api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -58,8 +57,6 @@ class GeneralApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         postData = (params['body'] if 'body' in params else None)
@@ -79,13 +76,12 @@ class GeneralApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: list[State]
         """
 
-        allParams = ['api_key', 'debug', 'use_cache']
+        allParams = ['api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -103,8 +99,6 @@ class GeneralApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         postData = (params['body'] if 'body' in params else None)

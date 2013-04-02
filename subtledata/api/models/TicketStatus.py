@@ -21,11 +21,20 @@ class TicketStatus:
 
     def __init__(self):
         self.swaggerTypes = {
-            'ticket_id': 'int'
+            'error': 'str',
+            'ticket_id': 'str',
+            'success': 'bool',
+            'result': 'str'
 
         }
 
 
-        #Ticket ID
-        self.ticket_id = None # int
+        #Error
+        self.error = None # str
+        #New Ticket ID
+        self.ticket_id = None # str
+        #Call was successful
+        self.success = None # bool
+        #Result Status
+        self.result = None # str
         
