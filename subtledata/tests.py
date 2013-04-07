@@ -107,12 +107,12 @@ class SDLocationTests(SDTestCase):
         #TODO:  Figure out how to best test this
 
     def test_open_tickets(self):
-        #this(self.Location.tickets.open).should.be.an(list)
-        #this(self.Location.tickets.filter()).should.be.an(list)
+        #this(self.Location.open_tickets.open).should.be.an(list)
+        #this(self.Location.open_tickets.filter()).should.be.an(list)
         pass
 
     def test_fetching_ticket(self):
-        #this(self.Location.tickets.get_with_pos_id(9876)).should.be.an(sd_ticket.SDTicket)
+        #this(self.Location.open_tickets.get_with_pos_id(9876)).should.be.an(sd_ticket.SDTicket)
         pass
 
     def test_create_tickets(self):
