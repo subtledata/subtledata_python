@@ -35,13 +35,8 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def tables(self):
-        self._swagger_tables = self._swagger_locations_api.getTableList(location_id=self._location_id,
-                                                                        api_key=self._api_key)
 
-        #Set the tables to be our type
-        table_list = [SDTable(parent=self, location=self, swagger_table=table) for table in self._swagger_tables]
-
-        return SDTableCollection(tables=table_list, parent=self)
+        return SDTableCollection(parent=self)
 
     def update_menu(self, use_cache=True):
 
@@ -84,9 +79,5 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def tickets(self):
-        self._swagger_tickets = self._swagger_locations_api.getTickets(location_id=self._location_id,
-                                                                       api_key=self._api_key)
 
-        ticket_list = [SDTicket(parent=self, location=self, ticket_id=ticket.ticket_id, user_id=ticket.user_id, swagger_ticket=ticket, get_values=False) for ticket in self._swagger_tickets]
-
-        return SDTicketCollection(parent=self, tickets=ticket_list)
+        return SDTicketCollection(parent=self)

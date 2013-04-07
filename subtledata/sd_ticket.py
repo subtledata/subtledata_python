@@ -11,7 +11,7 @@ class SDTicket(SDFirstClassObject):
         self.user_id = user_id
         self.location = location
 
-        if swagger_ticket is not None or get_values == True:
+        if swagger_ticket is None or get_values == True:
             self.refresh()
         else:
             self.refresh(swagger_ticket=swagger_ticket)
