@@ -1,13 +1,16 @@
 __author__ = 'gsibble'
 
-from base_types import  SDFirstClassObject
+from base_types import SDFirstClassObject
 from sd_menu import SDMenu
 from sd_table import SDTable
+from sd_ticket import SDTicket
 from sd_collections_tables import SDTableCollection
+from sd_collections_tickets import SDTicketCollection
+
 
 class SDLocation(SDFirstClassObject):
-
-    def __init__(self, parent, location_id, include_menu=False, use_cache=True, fetch=True, initial_data=None, *args, **kwargs):
+    def __init__(self, parent, location_id, include_menu=False, use_cache=True, fetch=True, initial_data=None, *args,
+                 **kwargs):
         super(SDLocation, self).__init__(parent, use_cache)
         self._location_id = location_id
         self._include_menu = include_menu
@@ -32,10 +35,11 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def tables(self):
-        self._swagger_tables = self._swagger_locations_api.getTableList(location_id=self._location_id, api_key=self._api_key)
+        self._swagger_tables = self._swagger_locations_api.getTableList(location_id=self._location_id,
+                                                                        api_key=self._api_key)
 
         #Set the tables to be our type
-        table_list = [SDTable(self, table) for table in self._swagger_tables]
+        table_list = [SDTable(parent=self, location=self, swagger_table=table) for table in self._swagger_tables]
 
         return SDTableCollection(tables=table_list, parent=self)
 
@@ -80,4 +84,9 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def tickets(self):
-        return None
+        self._swagger_tickets = self._swagger_locations_api.getTickets(location_id=self._location_id,
+                                                                       api_key=self._api_key)
+
+        ticket_list = [SDTicket(parent=self, location=self, ticket_id=ticket.ticket_id, user_id=ticket.user_id, swagger_ticket=ticket, get_values=False) for ticket in self._swagger_tickets]
+
+        return SDTicketCollection(parent=self, tickets=ticket_list)
