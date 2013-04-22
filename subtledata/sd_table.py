@@ -7,6 +7,13 @@ from sd_collections_tickets import SDTicketCollection
 class SDTable(SDFirstClassObject):
 
     def __init__(self, parent, location, swagger_table, use_cache=True):
+        """
+
+        :param parent:
+        :param location:
+        :param swagger_table:
+        :param use_cache:
+        """
         super(SDTable, self).__init__(location, use_cache)
         self.parent = parent
         self.location = location
@@ -15,6 +22,11 @@ class SDTable(SDFirstClassObject):
 
     def refresh(self, swagger_table=None):
 
+        """
+
+        :param swagger_table:
+        :raise:
+        """
         if swagger_table == None:
             if hasattr(self, 'table_id'):
                 self._swagger_table = self._swagger_locations_api.getTable(location_id=self.location.location_id,
@@ -33,6 +45,16 @@ class SDTable(SDFirstClassObject):
 
     def open_ticket(self, user_id, device_id, number_of_people_in_party=1, business_expense=False, custom_ticket_name=None, return_ticket_details=False):
 
+        """
+
+        :param user_id:
+        :param device_id:
+        :param number_of_people_in_party:
+        :param business_expense:
+        :param custom_ticket_name:
+        :param return_ticket_details:
+        :return: :raise:
+        """
         if hasattr(self, 'revenue_center_id') and hasattr(self, 'subtledata_id'):
             ticket_body = {
                 "revenue_center_id": self.revenue_center_id,

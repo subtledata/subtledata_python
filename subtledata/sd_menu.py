@@ -6,6 +6,12 @@ class SDMenu(SDFirstClassObject):
 
     def __init__(self, location, swagger_menu, use_cache=True):
 
+        """
+
+        :param location:
+        :param swagger_menu:
+        :param use_cache:
+        """
         super(SDMenu, self).__init__(location, use_cache)
 
         #Store parent location
@@ -36,6 +42,12 @@ class SDMenu(SDFirstClassObject):
 
     def get_category(self, category_id=None, category_name=None):
 
+        """
+
+        :param category_id:
+        :param category_name:
+        :return:
+        """
         category_object = None
 
         if category_id is not None:
@@ -47,6 +59,12 @@ class SDMenu(SDFirstClassObject):
 
     def get_item(self, item_id=None, item_name=None):
 
+        """
+
+        :param item_id:
+        :param item_name:
+        :return:
+        """
         item_object = None
 
         if item_id is not None:

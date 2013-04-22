@@ -4,6 +4,15 @@ from base_types import SDFirstClassObject
 
 class SDUser(SDFirstClassObject):
     def __init__(self, parent, user_id=False, user_name=None, use_cache=True, *args, **kwargs):
+        """
+
+        :param parent:
+        :param user_id:
+        :param user_name:
+        :param use_cache:
+        :param args:
+        :param kwargs:
+        """
         super(SDUser, self).__init__(parent, use_cache)
 
         if user_id is not None:

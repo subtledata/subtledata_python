@@ -5,6 +5,17 @@ import constants as C
 
 class SDTicket(SDFirstClassObject):
     def __init__(self, parent, location, ticket_id, user_id=0, get_values=True, swagger_ticket=None, *args, **kwargs):
+        """
+
+        :param parent:
+        :param location:
+        :param ticket_id:
+        :param user_id:
+        :param get_values:
+        :param swagger_ticket:
+        :param args:
+        :param kwargs:
+        """
         super(SDTicket, self).__init__(parent, False)
 
         self.ticket_id = ticket_id
@@ -17,7 +28,10 @@ class SDTicket(SDFirstClassObject):
             self.refresh(swagger_ticket=swagger_ticket)
 
     def refresh(self, swagger_ticket=None):
+        """
 
+        :param swagger_ticket:
+        """
         if swagger_ticket is None:
             self._swagger_ticket = self._swagger_locations_api.getTicket(self.location.location_id, self.ticket_id, api_key=self._api_key)
         else:
@@ -30,6 +44,14 @@ class SDTicket(SDFirstClassObject):
 
     def add_item_to_order(self, item_id, quantity, instructions=None, modifiers=None):
 
+        """
+
+        :param item_id:
+        :param quantity:
+        :param instructions:
+        :param modifiers:
+        :return: :raise:
+        """
         if hasattr(self, 'user_id') and hasattr(self, 'ticket_id'):
             if self.user_id is not None and self.ticket_id is not None:
                 post_body = {
@@ -61,7 +83,11 @@ class SDTicket(SDFirstClassObject):
             raise C.NoUserSetOnTicket
 
     def submit_order(self):
+        """
 
+
+        :return: :raise:
+        """
         if hasattr(self, 'user_id') and hasattr(self, 'ticket_id'):
             if self.user_id is not None and self.ticket_id is not None:
 
@@ -78,6 +104,13 @@ class SDTicket(SDFirstClassObject):
             raise C.NoUserSetOnTicket
 
     def add_discount(self, discount_type_id, discount, user_id=0):
+        """
+
+        :param discount_type_id:
+        :param discount:
+        :param user_id:
+        :return: :raise:
+        """
         if discount > self.total:
             raise ValueError('You cannot discount a ticket more than its total amount')
 

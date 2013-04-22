@@ -53,6 +53,13 @@ from sd_collections_general import SDGeneralInterface
 class SubtleData(object):
 
     def __init__(self, api_key, use_cache=True, testing=False, internal_debug=True):
+        """
+
+        :param api_key:
+        :param use_cache:
+        :param testing:
+        :param internal_debug:
+        """
         self.api_key = api_key
         self._use_cache = use_cache
         self._internal_debug = internal_debug

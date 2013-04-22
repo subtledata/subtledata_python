@@ -11,6 +11,17 @@ from sd_collections_tickets import SDTicketCollection
 class SDLocation(SDFirstClassObject):
     def __init__(self, parent, location_id, include_menu=False, use_cache=True, fetch=True, initial_data=None, *args,
                  **kwargs):
+        """
+
+        :param parent:
+        :param location_id:
+        :param include_menu:
+        :param use_cache:
+        :param fetch:
+        :param initial_data:
+        :param args:
+        :param kwargs:
+        """
         super(SDLocation, self).__init__(parent, use_cache)
         self._location_id = location_id
         self._include_menu = include_menu
@@ -24,6 +35,10 @@ class SDLocation(SDFirstClassObject):
 
     def refresh(self):
         #Get the location via swagger
+        """
+
+
+        """
         self._swagger_location = self._swagger_locations_api.getLocation(self._location_id, self._api_key,
                                                                          use_cache=self._use_cache)
 
@@ -35,11 +50,18 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def tables(self):
+        """
 
+
+        :return:
+        """
         return SDTableCollection(parent=self)
 
     def update_menu(self, use_cache=True):
+        """
 
+        :param use_cache:
+        """
         if not self._use_cache:
             use_cache = False
 
@@ -48,7 +70,11 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def menu(self):
+        """
 
+
+        :return:
+        """
         if not hasattr(self, '_swagger_menu'):
             self.update_menu()
 
@@ -56,6 +82,11 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def open_tables(self):
+        """
+
+
+        :return:
+        """
         return []
 
     def open_ticket_for_dine_in(self, user_id, device_id, table_id, business_expense=False):
@@ -79,5 +110,9 @@ class SDLocation(SDFirstClassObject):
 
     @property
     def tickets(self):
+        """
 
+
+        :return:
+        """
         return SDTicketCollection(parent=self)

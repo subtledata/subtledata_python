@@ -7,6 +7,12 @@ from api.GeneralApi import GeneralApi
 class SDInterface(object):
 
     def __init__(self, parent, *args, **kwargs):
+        """
+
+        :param parent:
+        :param args:
+        :param kwargs:
+        """
         if hasattr(parent, 'api_key'):
             self._api_key = parent.api_key
         else:
@@ -21,10 +27,23 @@ class SDInterface(object):
 class SDFirstClassCollection(SDInterface):
 
     def __init__(self, parent, *args, **kwargs):
+        """
+
+        :param parent:
+        :param args:
+        :param kwargs:
+        """
         super(SDFirstClassCollection, self).__init__(parent)
 
 class SDFirstClassObject(SDInterface):
     def __init__(self, parent, use_cache=True, *args, **kwargs):
+        """
+
+        :param parent:
+        :param use_cache:
+        :param args:
+        :param kwargs:
+        """
         super(SDFirstClassObject, self).__init__(parent)
 
         #Override use cache if not already set to False
@@ -32,5 +51,9 @@ class SDFirstClassObject(SDInterface):
             self._use_cache = use_cache
 
     def _set_attribs(self, swagger_object):
+        """
+
+        :param swagger_object:
+        """
         for attribute in swagger_object.swaggerTypes:
             self.__setattr__(attribute, getattr(swagger_object, attribute))
