@@ -23,7 +23,6 @@ class ItemToAdd:
         self.swaggerTypes = {
             'item_id': 'int',
             'instructions': 'str',
-            'modifiers': 'int',
             'quantity': 'int'
 
         }
@@ -33,8 +32,6 @@ class ItemToAdd:
         self.item_id = None # int
         #Additional Order Instructions
         self.instructions = None # str
-        #Item Modifiers
-        self.modifiers = None # int
         #Item Quantity
         self.quantity = None # int
         

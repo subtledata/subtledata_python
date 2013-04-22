@@ -21,6 +21,7 @@ class NewTicket:
 
     def __init__(self):
         self.swaggerTypes = {
+            'employee_id': 'int',
             'user_id': 'int',
             'number_of_people_in_party': 'int',
             'custom_ticket_name': 'str',
@@ -31,6 +32,8 @@ class NewTicket:
         }
 
 
+        #
+        self.employee_id = None # int
         #SubtleData User ID
         self.user_id = None # int
         #Number of people in party

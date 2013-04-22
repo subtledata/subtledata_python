@@ -34,13 +34,12 @@ class UsersApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, NewUser: New User Object (required)
             
         Returns: User
         """
 
-        allParams = ['api_key', 'debug', 'body']
+        allParams = ['api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -58,8 +57,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         postData = (params['body'] if 'body' in params else None)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
@@ -78,13 +75,12 @@ class UsersApi(object):
         Args:
             user_id, int: Subtledata User ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: User
         """
 
-        allParams = ['user_id', 'api_key', 'debug', 'use_cache']
+        allParams = ['user_id', 'api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -102,8 +98,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         if ('user_id' in params):
@@ -128,12 +122,11 @@ class UsersApi(object):
         Args:
             user_id, int: Subtledata User ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             
         Returns: DeleteUserStatus
         """
 
-        allParams = ['user_id', 'api_key', 'debug']
+        allParams = ['user_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -151,8 +144,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('user_id' in params):
             replacement = str(self.apiClient.toPathValue(params['user_id']))
             resourcePath = resourcePath.replace('{' + 'user_id' + '}',
@@ -174,13 +165,12 @@ class UsersApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, AuthUserRequest: New User Authentication Request (required)
             
         Returns: AuthResponse
         """
 
-        allParams = ['api_key', 'debug', 'body']
+        allParams = ['api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -198,8 +188,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         postData = (params['body'] if 'body' in params else None)
 
         response = self.apiClient.callAPI(resourcePath, method, queryParams,
@@ -218,13 +206,12 @@ class UsersApi(object):
         Args:
             user_name, str: Subtledata User Name (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: list[User]
         """
 
-        allParams = ['user_name', 'api_key', 'debug', 'use_cache']
+        allParams = ['user_name', 'api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -242,8 +229,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         if ('user_name' in params):
@@ -268,12 +253,11 @@ class UsersApi(object):
         Args:
             user_id, int: SubtleData User ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             
         Returns: list[Card]
         """
 
-        allParams = ['user_id', 'api_key', 'debug']
+        allParams = ['user_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -291,8 +275,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('user_id' in params):
             replacement = str(self.apiClient.toPathValue(params['user_id']))
             resourcePath = resourcePath.replace('{' + 'user_id' + '}',
@@ -315,13 +297,12 @@ class UsersApi(object):
         Args:
             user_id, int: SubtleData User ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, NewCard: New Card Object (required)
             
         Returns: CardStatus
         """
 
-        allParams = ['user_id', 'api_key', 'debug', 'body']
+        allParams = ['user_id', 'api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -339,8 +320,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('user_id' in params):
             replacement = str(self.apiClient.toPathValue(params['user_id']))
             resourcePath = resourcePath.replace('{' + 'user_id' + '}',
@@ -364,12 +343,11 @@ class UsersApi(object):
             user_id, int: SubtleData User ID (required)
             card_id, int: SubtleData User ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             
         Returns: Status
         """
 
-        allParams = ['user_id', 'card_id', 'api_key', 'debug']
+        allParams = ['user_id', 'card_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -387,8 +365,6 @@ class UsersApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('user_id' in params):
             replacement = str(self.apiClient.toPathValue(params['user_id']))
             resourcePath = resourcePath.replace('{' + 'user_id' + '}',

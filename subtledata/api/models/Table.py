@@ -22,7 +22,6 @@ class Table:
     def __init__(self):
         self.swaggerTypes = {
             'pos_table_id': 'int',
-            'open_tickets': 'list[OpenTicket]',
             'subtledata_id': 'int',
             'revenue_center_id': 'int',
             'name': 'str'
@@ -32,7 +31,6 @@ class Table:
 
         #Table Identifier
         self.pos_table_id = None # int
-        self.open_tickets = None # list[OpenTicket]
         #Table ID
         self.subtledata_id = None # int
         #Revenue Center ID
