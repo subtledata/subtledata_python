@@ -17,7 +17,6 @@ class SDTable(SDFirstClassObject):
         super(SDTable, self).__init__(location, use_cache)
         self.parent = parent
         self.location = location
-        self.open_tickets = []
         self.refresh(swagger_table=swagger_table)
 
     def refresh(self, swagger_table=None):
@@ -28,9 +27,9 @@ class SDTable(SDFirstClassObject):
         :raise:
         """
         if swagger_table == None:
-            if hasattr(self, 'table_id'):
+            if hasattr(self, 'subtledata_id'):
                 self._swagger_table = self._swagger_locations_api.getTable(location_id=self.location.location_id,
-                                                                           table_id=self.table_id,
+                                                                           table_id=self.subtledata_id,
                                                                            api_key=self._api_key)
             else:
                 raise ValueError('Table has no ID')
@@ -38,10 +37,10 @@ class SDTable(SDFirstClassObject):
             self._swagger_table = swagger_table
 
         for attribute in self._swagger_table.swaggerTypes:
-            self.__setattr__(attribute, getattr(self._swagger_table, attribute))
-
-        ticket_list = [SDTicket(parent=self, location=self.location, ticket_id=ticket.ticket_id, user_id=ticket.user_id, swagger_ticket=ticket, get_values=False) for ticket in self.open_tickets]
-        self.open_tickets = ticket_list
+            if attribute != 'open_tickets':
+                self.__setattr__(attribute, getattr(self._swagger_table, attribute))
+            else:
+                self.__setattr__('_swagger_tickets', getattr(self._swagger_table, 'open_tickets'))
 
     def open_ticket(self, user_id, device_id, number_of_people_in_party=1, business_expense=False, custom_ticket_name=None, return_ticket_details=False):
 
@@ -82,3 +81,9 @@ class SDTable(SDFirstClassObject):
         else:
             return SDTicket(self._api_client, ticket_response.ticket_id, user_id)
 
+    @property
+    def open_tickets(self):
+        self.refresh()
+        ticket_list = [SDTicket(parent=self, location=self.location, ticket_id=ticket.ticket_id, user_id=ticket.user_id, swagger_ticket=ticket, get_values=False) for ticket in self._swagger_tickets]
+
+        return ticket_list
