@@ -21,26 +21,17 @@ class ExternalPaymentStatus:
 
     def __init__(self):
         self.swaggerTypes = {
-            'user_id': 'int',
-            'success': 'bool',
-            'card_id': 'str',
             'result': 'str',
-            'error': 'str',
-            'device_id': 'int'
+            'success': 'bool',
+            'error': 'str'
 
         }
 
 
-        #SubtleData User ID
-        self.user_id = None # int
-        #Call was successful
-        self.success = None # bool
-        #New Card ID
-        self.card_id = None # str
         #Result Status
         self.result = None # str
+        #Call was successful
+        self.success = None # bool
         #Error
         self.error = None # str
-        #SubtleData Device ID
-        self.device_id = None # int
         

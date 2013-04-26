@@ -21,26 +21,23 @@ class NewConnection:
 
     def __init__(self):
         self.swaggerTypes = {
+            'latitude': 'float',
             'cover_number': 'int',
             'user_id': 'int',
-            'additional_user_name': 'str',
             'longitude': 'float',
-            'latitude': 'float',
             'device_id': 'int'
 
         }
 
 
         #
+        self.latitude = None # float
+        #
         self.cover_number = None # int
         #
         self.user_id = None # int
         #
-        self.additional_user_name = None # str
-        #
         self.longitude = None # float
-        #
-        self.latitude = None # float
         #
         self.device_id = None # int
         
