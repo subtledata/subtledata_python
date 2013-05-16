@@ -22,9 +22,10 @@ class TableDetails:
     def __init__(self):
         self.swaggerTypes = {
             'pos_table_id': 'int',
-            'open_tickets': 'list[OpenTicket]',
             'subtledata_id': 'int',
+            'revenue_center_name': 'str',
             'revenue_center_id': 'int',
+            'open_tickets': 'list[OpenTicket]',
             'name': 'str'
 
         }
@@ -32,11 +33,13 @@ class TableDetails:
 
         #Table Identifier
         self.pos_table_id = None # int
-        self.open_tickets = None # list[OpenTicket]
         #Table ID
         self.subtledata_id = None # int
+        #Revenue Center Name
+        self.revenue_center_name = None # str
         #Revenue Center ID
         self.revenue_center_id = None # int
+        self.open_tickets = None # list[OpenTicket]
         #Table Name
         self.name = None # str
         

@@ -24,14 +24,14 @@ class NewUser:
             'first_name': 'str',
             'last_name': 'str',
             'middle_name': 'str',
+            'device_uuid': 'str',
             'dob': 'str',
             'email_address': 'str',
             'longitude': 'float',
             'cell_phone': 'str',
             'latitude': 'float',
             'password': 'str',
-            'user_name': 'str',
-            'device_id': 'str'
+            'user_name': 'str'
 
         }
 
@@ -42,6 +42,8 @@ class NewUser:
         self.last_name = None # str
         #
         self.middle_name = None # str
+        #
+        self.device_uuid = None # str
         #
         self.dob = None # str
         #
@@ -56,6 +58,4 @@ class NewUser:
         self.password = None # str
         #
         self.user_name = None # str
-        #
-        self.device_id = None # str
         

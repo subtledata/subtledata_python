@@ -34,13 +34,12 @@ class LocationsApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: list[Location]
         """
 
-        allParams = ['api_key', 'debug', 'use_cache']
+        allParams = ['api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -58,8 +57,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         postData = (params['body'] if 'body' in params else None)
@@ -79,7 +76,6 @@ class LocationsApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             latitude, float: Latitude floating point value of search coordinate (required)
             longitude, float: Longitude floating point value of search coordinate (required)
@@ -88,7 +84,7 @@ class LocationsApi(object):
         Returns: list[Location]
         """
 
-        allParams = ['api_key', 'debug', 'use_cache', 'latitude', 'longitude', 'radius']
+        allParams = ['api_key', 'use_cache', 'latitude', 'longitude', 'radius']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -106,8 +102,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         if ('latitude' in params):
@@ -134,13 +128,12 @@ class LocationsApi(object):
         Args:
             location_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: Location
         """
 
-        allParams = ['location_id', 'api_key', 'debug', 'use_cache']
+        allParams = ['location_id', 'api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -158,8 +151,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         if ('location_id' in params):
@@ -184,13 +175,12 @@ class LocationsApi(object):
         Args:
             location_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: list[Category]
         """
 
-        allParams = ['location_id', 'api_key', 'debug', 'use_cache']
+        allParams = ['location_id', 'api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -208,8 +198,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         if ('location_id' in params):
@@ -234,14 +222,13 @@ class LocationsApi(object):
         Args:
             location_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             manager_id, int:  (required)
             revenue_center_id, int:  (optional)
             
         Returns: list[Employee]
         """
 
-        allParams = ['location_id', 'api_key', 'debug', 'manager_id', 'revenue_center_id']
+        allParams = ['location_id', 'api_key', 'manager_id', 'revenue_center_id']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -259,8 +246,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('manager_id' in params):
             queryParams['manager_id'] = self.apiClient.toPathValue(params['manager_id'])
         if ('revenue_center_id' in params):
@@ -287,13 +272,12 @@ class LocationsApi(object):
         Args:
             location_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             use_cache, bool: Utilize Cached Data (optional)
             
         Returns: list[TableMinimal]
         """
 
-        allParams = ['location_id', 'api_key', 'debug', 'use_cache']
+        allParams = ['location_id', 'api_key', 'use_cache']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -311,8 +295,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('use_cache' in params):
             queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
         if ('location_id' in params):
@@ -337,12 +319,12 @@ class LocationsApi(object):
         Args:
             location_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
+            condensed, bool: Remove ticket details (optional)
             
         Returns: list[Ticket]
         """
 
-        allParams = ['location_id', 'api_key', 'debug']
+        allParams = ['location_id', 'api_key', 'condensed']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -360,8 +342,8 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
+        if ('condensed' in params):
+            queryParams['condensed'] = self.apiClient.toPathValue(params['condensed'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -384,14 +366,13 @@ class LocationsApi(object):
         Args:
             location_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             ticket_type, str: Order Type (optional)
             body, NewTicket: New Ticket Object (required)
             
         Returns: TicketStatus
         """
 
-        allParams = ['location_id', 'api_key', 'debug', 'ticket_type', 'body']
+        allParams = ['location_id', 'api_key', 'ticket_type', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -409,8 +390,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('ticket_type' in params):
             queryParams['ticket_type'] = self.apiClient.toPathValue(params['ticket_type'])
         if ('location_id' in params):
@@ -429,6 +408,50 @@ class LocationsApi(object):
         return responseObject
         
         
+    def getTabs(self, location_id, api_key, **kwargs):
+        """Get a list of tabs by location ID
+
+        Args:
+            location_id, int: Subtledata Location ID (required)
+            api_key, str: Subtledata API Key (required)
+            
+        Returns: list[Tab]
+        """
+
+        allParams = ['location_id', 'api_key']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getTabs" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/locations/{location_id}/tabs'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('location_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['location_id']))
+            resourcePath = resourcePath.replace('{' + 'location_id' + '}',
+                                                replacement)
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'list[Tab]')
+        return responseObject
+        
+        
     def getTable(self, location_id, table_id, api_key, **kwargs):
         """Get a table by location ID and unique ID
 
@@ -436,12 +459,11 @@ class LocationsApi(object):
             location_id, int: Subtledata Location ID (required)
             table_id, int: Subtledata Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             
         Returns: TableDetails
         """
 
-        allParams = ['location_id', 'table_id', 'api_key', 'debug']
+        allParams = ['location_id', 'table_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -459,8 +481,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -489,12 +509,11 @@ class LocationsApi(object):
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
             user_id, int:  (optional)
-            debug, bool: Internal Use Only (optional)
             
         Returns: Ticket
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'user_id', 'debug']
+        allParams = ['location_id', 'ticket_id', 'api_key', 'user_id']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -514,8 +533,6 @@ class LocationsApi(object):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
         if ('user_id' in params):
             queryParams['user_id'] = self.apiClient.toPathValue(params['user_id'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -544,12 +561,11 @@ class LocationsApi(object):
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
             user_id, int:  (optional)
-            debug, bool: Internal Use Only (optional)
             
         Returns: Status
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'user_id', 'debug']
+        allParams = ['location_id', 'ticket_id', 'api_key', 'user_id']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -569,8 +585,6 @@ class LocationsApi(object):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
         if ('user_id' in params):
             queryParams['user_id'] = self.apiClient.toPathValue(params['user_id'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -599,12 +613,11 @@ class LocationsApi(object):
             pos_ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
             user_id, int:  (optional)
-            debug, bool: Internal Use Only (optional)
             
         Returns: Ticket
         """
 
-        allParams = ['location_id', 'pos_ticket_id', 'api_key', 'user_id', 'debug']
+        allParams = ['location_id', 'pos_ticket_id', 'api_key', 'user_id']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -624,8 +637,6 @@ class LocationsApi(object):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
         if ('user_id' in params):
             queryParams['user_id'] = self.apiClient.toPathValue(params['user_id'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -654,12 +665,11 @@ class LocationsApi(object):
             ticket_id, int: SubtleData Location ID (required)
             user_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             
         Returns: OrderResults
         """
 
-        allParams = ['location_id', 'ticket_id', 'user_id', 'api_key', 'debug']
+        allParams = ['location_id', 'ticket_id', 'user_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -677,8 +687,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -711,13 +719,12 @@ class LocationsApi(object):
             ticket_id, int: SubtleData Location ID (required)
             user_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, ItemToAdd: The Item object to Add (required)
             
         Returns: Status
         """
 
-        allParams = ['location_id', 'ticket_id', 'user_id', 'api_key', 'debug', 'body']
+        allParams = ['location_id', 'ticket_id', 'user_id', 'api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -735,8 +742,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -768,12 +773,11 @@ class LocationsApi(object):
             location_id, int: SubtleData Location ID (required)
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             
         Returns: list[User]
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'debug']
+        allParams = ['location_id', 'ticket_id', 'api_key']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -791,8 +795,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -820,13 +822,12 @@ class LocationsApi(object):
             location_id, int: SubtleData Location ID (required)
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, NewConnection: Into used to connect the user (required)
             
         Returns: ConnectStatus
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'debug', 'body']
+        allParams = ['location_id', 'ticket_id', 'api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -844,8 +845,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -873,13 +872,12 @@ class LocationsApi(object):
             location_id, int: SubtleData Location ID (required)
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, DiscountInfo: Details regarding the discount (required)
             
         Returns: Status
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'debug', 'body']
+        allParams = ['location_id', 'ticket_id', 'api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -897,8 +895,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -926,13 +922,12 @@ class LocationsApi(object):
             location_id, int: SubtleData Location ID (required)
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, NewPayment: Info used for payment (required)
             
         Returns: PaymentStatus
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'debug', 'body']
+        allParams = ['location_id', 'ticket_id', 'api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -950,8 +945,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',
@@ -979,13 +972,12 @@ class LocationsApi(object):
             location_id, int: SubtleData Location ID (required)
             ticket_id, int: SubtleData Location ID (required)
             api_key, str: Subtledata API Key (required)
-            debug, bool: Internal Use Only (optional)
             body, NewExternalPayment: Info used for payment (required)
             
         Returns: ExternalPaymentStatus
         """
 
-        allParams = ['location_id', 'ticket_id', 'api_key', 'debug', 'body']
+        allParams = ['location_id', 'ticket_id', 'api_key', 'body']
 
         params = locals()
         for (key, val) in params['kwargs'].iteritems():
@@ -1003,8 +995,6 @@ class LocationsApi(object):
 
         if ('api_key' in params):
             queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
-        if ('debug' in params):
-            queryParams['debug'] = self.apiClient.toPathValue(params['debug'])
         if ('location_id' in params):
             replacement = str(self.apiClient.toPathValue(params['location_id']))
             resourcePath = resourcePath.replace('{' + 'location_id' + '}',

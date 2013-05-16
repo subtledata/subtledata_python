@@ -30,7 +30,7 @@ class ExternalPaymentStatus:
 
         #Result Status
         self.result = None # str
-        #Call was successful
+        #Call success status
         self.success = None # bool
         #Error
         self.error = None # str
