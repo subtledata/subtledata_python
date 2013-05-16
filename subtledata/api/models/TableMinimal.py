@@ -23,8 +23,9 @@ class TableMinimal:
         self.swaggerTypes = {
             'pos_table_id': 'int',
             'subtledata_id': 'int',
-            'revenue_center_id': 'int',
-            'name': 'str'
+            'revenue_center_name': 'str',
+            'name': 'str',
+            'revenue_center_id': 'int'
 
         }
 
@@ -33,8 +34,10 @@ class TableMinimal:
         self.pos_table_id = None # int
         #Table ID
         self.subtledata_id = None # int
-        #Revenue Center ID
-        self.revenue_center_id = None # int
+        #Revenue Center Name
+        self.revenue_center_name = None # str
         #Table Name
         self.name = None # str
+        #Revenue Center ID
+        self.revenue_center_id = None # int
         

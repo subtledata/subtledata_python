@@ -33,7 +33,7 @@ class CardStatus:
         self.card_id = None # str
         #Result Status
         self.result = None # str
-        #Call was successful
+        #Call success status
         self.success = None # bool
         #Error
         self.error = None # str
