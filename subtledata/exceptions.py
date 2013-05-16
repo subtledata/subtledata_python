@@ -7,3 +7,6 @@ class NoUserSetOnTicket(Exception):
 
 class NoTicketID(Exception):
     pass
+
+class UserNotCreated(Exception):
+    pass

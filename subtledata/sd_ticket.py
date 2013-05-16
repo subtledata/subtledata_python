@@ -1,7 +1,7 @@
 __author__ = 'gsibble'
 
 from base_types import SDFirstClassObject
-import constants as C
+import exceptions as Exceptions
 
 class SDTicket(SDFirstClassObject):
     def __init__(self, parent, location, ticket_id, user_id=0, get_values=True, swagger_ticket=None, *args, **kwargs):
@@ -65,8 +65,7 @@ class SDTicket(SDFirstClassObject):
             if self.ticket_id is not None:
                 post_body = {
                     'item_id': int(item_id),
-                    'quantity': quantity,
-
+                    'quantity': quantity
                     }
 
                 if instructions is not None:
@@ -112,9 +111,9 @@ class SDTicket(SDFirstClassObject):
 
                 return returned_status
             else:
-                raise C.NoTicketID
+                raise Exceptions.NoTicketID
         else:
-            raise C.NoUserSetOnTicket
+            raise Exceptions.NoUserSetOnTicket
 
     def add_discount(self, discount_type_id, discount, user_id=0):
         """
