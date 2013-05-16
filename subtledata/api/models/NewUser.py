@@ -21,41 +21,17 @@ class NewUser:
 
     def __init__(self):
         self.swaggerTypes = {
-            'first_name': 'str',
-            'last_name': 'str',
-            'middle_name': 'str',
-            'device_uuid': 'str',
-            'dob': 'str',
-            'email_address': 'str',
-            'longitude': 'float',
-            'cell_phone': 'str',
-            'latitude': 'float',
-            'password': 'str',
-            'user_name': 'str'
+            'user_guid': 'str',
+            'user_id': 'int',
+            'device_id': 'int'
 
         }
 
 
-        #
-        self.first_name = None # str
-        #
-        self.last_name = None # str
-        #
-        self.middle_name = None # str
-        #
-        self.device_uuid = None # str
-        #
-        self.dob = None # str
-        #
-        self.email_address = None # str
-        #
-        self.longitude = None # float
-        #
-        self.cell_phone = None # str
-        #
-        self.latitude = None # float
-        #
-        self.password = None # str
-        #
-        self.user_name = None # str
+        #Device Identifier
+        self.user_guid = None # str
+        #User ID
+        self.user_id = None # int
+        #Device Identifier
+        self.device_id = None # int
         

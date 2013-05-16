@@ -34,9 +34,9 @@ class UsersApi(object):
 
         Args:
             api_key, str: Subtledata API Key (required)
-            body, NewUser: New User Object (required)
+            body, NewUserDetails: New User Object (required)
             
-        Returns: User
+        Returns: NewUser
         """
 
         allParams = ['api_key', 'body']
@@ -65,7 +65,7 @@ class UsersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'User')
+        responseObject = self.apiClient.deserialize(response, 'NewUser')
         return responseObject
         
         
