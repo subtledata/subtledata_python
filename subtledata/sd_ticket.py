@@ -53,7 +53,16 @@ class SDTicket(SDFirstClassObject):
         :return: :raise:
         """
         if hasattr(self, 'user_id') and hasattr(self, 'ticket_id'):
-            if self.user_id is not None and self.ticket_id is not None:
+
+            #If we don't have a user_id, use the default user of 0
+            if self.user_id is None:
+                user_id = 0
+
+            #But if we do have a user, use them
+            else:
+                user_id = self.user_id
+
+            if self.ticket_id is not None:
                 post_body = {
                     'item_id': int(item_id),
                     'quantity': quantity,
@@ -66,19 +75,18 @@ class SDTicket(SDFirstClassObject):
                 if modifiers is not None:
                     post_body['modifiers'] = modifiers
 
-                print post_body
+                #print post_body
 
                 returned_status = self._swagger_locations_api.addItemsToOrder(location_id=self.location.location_id,
                                                                               ticket_id=self.ticket_id,
-                                                                              user_id=self.user_id,
+                                                                              user_id=user_id,
                                                                               api_key=self._api_key,
                                                                               body=post_body)
 
                 return returned_status
-
             else:
 
-                raise C.NoUserSetOnTicket
+                raise C.NoTicketID
         else:
             raise C.NoUserSetOnTicket
 

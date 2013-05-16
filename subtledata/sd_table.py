@@ -67,19 +67,15 @@ class SDTable(SDFirstClassObject):
         else:
             raise KeyError('Table missing key data')
 
-        print ticket_body
-
         #Send the request
         ticket_response = self._swagger_locations_api.createTicket(self.location._location_id, self._api_key, ticket_type='dine-in', body=ticket_body)
 
-        print ticket_response.ticket_id
-
         if return_ticket_details:
             #Get the totals
-            return SDTicket(self._api_client, ticket_response.ticket_id, user_id)
+            return SDTicket(parent=self, location=self.location, ticket_id=ticket_response.ticket_id, user_id=user_id, get_values=True)
 
         else:
-            return SDTicket(self._api_client, ticket_response.ticket_id, user_id)
+            return SDTicket(parent=self, location=self.location, ticket_id=ticket_response.ticket_id, user_id=user_id, get_values=False)
 
     @property
     def open_tickets(self):
