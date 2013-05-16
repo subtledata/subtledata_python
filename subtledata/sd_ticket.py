@@ -97,17 +97,22 @@ class SDTicket(SDFirstClassObject):
         :return: :raise:
         """
         if hasattr(self, 'user_id') and hasattr(self, 'ticket_id'):
-            if self.user_id is not None and self.ticket_id is not None:
 
+            #If we don't have a connected user, use the default user 0
+            if self.user_id is None:
+                user_id = 0
+            else:
+                user_id = self.user_id
+
+            if self.ticket_id is not None:
                 returned_status = self._swagger_locations_api.submitOrder(location_id=self.location.location_id,
                                                                           ticket_id=self.ticket_id,
-                                                                          user_id=self.user_id,
-                                                                          api_key=self._api_key,
-                                                                          body={'send': True})
+                                                                          user_id=user_id,
+                                                                          api_key=self._api_key)
 
                 return returned_status
             else:
-                raise C.NoUserSetOnTicket
+                raise C.NoTicketID
         else:
             raise C.NoUserSetOnTicket
 
