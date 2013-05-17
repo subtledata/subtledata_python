@@ -10,3 +10,6 @@ class NoTicketID(Exception):
 
 class UserNotCreated(Exception):
     pass
+
+class UserLoginError(Exception):
+    pass
