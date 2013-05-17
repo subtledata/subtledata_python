@@ -208,7 +208,7 @@ class UsersApi(object):
             api_key, str: Subtledata API Key (required)
             use_cache, bool: Utilize Cached Data (optional)
             
-        Returns: list[User]
+        Returns: User
         """
 
         allParams = ['user_name', 'api_key', 'use_cache']
@@ -243,7 +243,7 @@ class UsersApi(object):
         if not response:
             return None
 
-        responseObject = self.apiClient.deserialize(response, 'list[User]')
+        responseObject = self.apiClient.deserialize(response, 'User')
         return responseObject
         
         
