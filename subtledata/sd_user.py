@@ -3,7 +3,7 @@ __author__ = 'gsibble'
 from base_types import SDFirstClassObject
 
 class SDUser(SDFirstClassObject):
-    def __init__(self, parent, user_id=False, user_name=None, use_cache=True, *args, **kwargs):
+    def __init__(self, parent, user_id=None, user_name=None, use_cache=True, *args, **kwargs):
         """
 
         :param parent:
@@ -18,7 +18,7 @@ class SDUser(SDFirstClassObject):
         if user_id is not None:
             self._swagger_user = self._swagger_users_api.getUser(user_id, self._api_key, use_cache=self._use_cache)
         elif user_name is not None:
-            self._swagger_user = self._swagger_users_api.searchUsersByName(user_name, self._api_key,
+            self._swagger_user = self._swagger_users_api.searchUsersByName(user_name=user_name, api_key=self._api_key,
                                                                            use_cache=self._use_cache)
         else:
             self._swagger_user = None

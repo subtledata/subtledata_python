@@ -43,7 +43,6 @@ class SDTable(SDFirstClassObject):
                 self.__setattr__('_swagger_tickets', getattr(self._swagger_table, 'open_tickets'))
 
     def open_ticket(self, user_id, device_id, number_of_people_in_party=1, business_expense=False, custom_ticket_name=None, return_ticket_details=False):
-
         """
 
         :param user_id:
