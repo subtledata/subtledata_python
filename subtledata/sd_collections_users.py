@@ -6,6 +6,8 @@ from sd_user import SDUser
 
 import exceptions as Exceptions
 
+from urllib2 import HTTPError
+
 class SDUserCollection(SDFirstClassCollection):
 
     def __init__(self, parent):
@@ -35,7 +37,22 @@ class SDUserCollection(SDFirstClassCollection):
         if not self._use_cache:
             use_cache = False
 
-        return SDUser(self, user_id=user_id, use_cache=use_cache)
+        try:
+            user = SDUser(self, user_id=user_id, use_cache=use_cache)
+        except HTTPError:
+            user = None
+        return user
+
+    def getWithUsername(self, user_name, use_cache=True):
+        if not self._use_cache:
+            use_cache = False
+
+        try:
+            user = SDUser(self, user_name=user_name, use_cache=use_cache)
+        except HTTPError:
+            user = None
+
+        return user
 
     def filter(self, first_name=None):
         """
@@ -44,6 +61,33 @@ class SDUserCollection(SDFirstClassCollection):
         :return:
         """
         return []
+
+    def login(self, device_uuid, password, user_id=None, user_name=None, latitude=None, longitude=None):
+
+        login_body = {
+          "device_uuid": device_uuid,
+          "password": password
+        }
+
+        if user_id:
+            login_body['user_id'] = user_id
+        else:
+            login_body['user_name'] = user_name
+
+        if latitude and longitude:
+            login_body['latitude'] = latitude
+            login_body['longitude'] = longitude
+
+        #Login the user
+        login_result = self._swagger_users_api.authUser(api_key=self._api_key, body=login_body)
+
+        if login_result.success == True:
+            user = self.get(login_result.user_id, use_cache=False)
+            user.__setattr__('device_id', login_result.device_id)
+        else:
+            raise Exceptions.UserLoginError
+
+        return user
 
     def create(self, user_name, password, first_name,
                last_name, device_uuid,
