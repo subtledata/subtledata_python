@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='subtledata',
-    version='0.0.8-8',
+    version='0.0.8-10',
     packages=['subtledata', 'subtledata.api', 'subtledata.api.models'],
     url='http://dev.subtledata.com/libraries/python',
     license='MIT',
