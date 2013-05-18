@@ -85,9 +85,9 @@ class SDTicket(SDFirstClassObject):
                 return returned_status
             else:
 
-                raise C.NoTicketID
+                raise Exceptions.NoTicketID
         else:
-            raise C.NoUserSetOnTicket
+            raise Exceptions.NoUserSetOnTicket
 
     def submit_order(self):
         """
@@ -140,3 +140,22 @@ class SDTicket(SDFirstClassObject):
         self.refresh()
 
         return discountStatus
+
+    def pay_with_external_source(self, amount, tip_amount, user_id, device_id, tender_type_id, payment_source_name):
+
+        payment_body = {
+          "payment_source_name": payment_source_name,
+          "tip_amount": tip_amount,
+          "amount_before_tip": amount,
+          "tender_type_id": tender_type_id,
+          "user_id": user_id,
+          "device_id": device_id
+        }
+
+        paymentStatus = self._swagger_locations_api.addExternalPaymentToTicket(location_id=self.location.location_id,
+                                                                               ticket_id=self.ticket_id,
+                                                                               body=payment_body,
+                                                                               api_key=self._api_key)
+        self.refresh()
+
+        return paymentStatus
