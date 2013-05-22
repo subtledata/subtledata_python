@@ -159,3 +159,14 @@ class SDTicket(SDFirstClassObject):
         self.refresh()
 
         return paymentStatus
+
+    def void(self):
+        voidStatus = self._swagger_locations_api.voidTicket(location_id=self.location.location_id,
+                                                            ticket_id=self.ticket_id,
+                                                            api_key=self._api_key)
+
+        return voidStatus
+
+    def cancel(self):
+
+        return self.void()
