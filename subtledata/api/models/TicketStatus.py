@@ -22,7 +22,7 @@ class TicketStatus:
     def __init__(self):
         self.swaggerTypes = {
             'error': 'str',
-            'ticket_id': 'str',
+            'ticket_id': 'int',
             'success': 'bool',
             'result': 'str'
 
@@ -32,7 +32,7 @@ class TicketStatus:
         #Error
         self.error = None # str
         #New Ticket ID
-        self.ticket_id = None # str
+        self.ticket_id = None # int
         #Call was successful
         self.success = None # bool
         #Result Status

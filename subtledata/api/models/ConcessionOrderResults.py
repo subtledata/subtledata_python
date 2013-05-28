@@ -21,20 +21,23 @@ class ConcessionOrderResults:
 
     def __init__(self):
         self.swaggerTypes = {
+            'payment_success': 'bool',
             'error': 'str',
-            'result': 'str',
+            'ticket_id': 'int',
             'success': 'bool',
-            'payment_success': 'bool'
+            'result': 'str'
 
         }
 
 
-        #Error
-        self.error = None # str
-        #Result Status
-        self.result = None # str
-        #Call success status
-        self.success = None # bool
         #Payment Success Flag
         self.payment_success = None # bool
+        #Error
+        self.error = None # str
+        #New Ticket ID
+        self.ticket_id = None # int
+        #Call success status
+        self.success = None # bool
+        #Result Status
+        self.result = None # str
         
