@@ -89,19 +89,24 @@ class SDLocation(SDFirstClassObject):
         """
         return []
 
-    def open_ticket_for_dine_in(self, user_id, device_id, table_id, business_expense=False):
-        new_ticket_body = {
-
+    def open_ticket_for_take_out(self, user_id, device_id, revenue_center_id, number_of_people_in_party=1, business_expense=False, custom_ticket_name=None, return_ticket_details=False):
+        ticket_body = {
+            "revenue_center_id": revenue_center_id,
+            "number_of_people_in_party": number_of_people_in_party,
+            "user_id": user_id,
+            "device_id": device_id,
+            "business_expense": business_expense,
+            "custom_ticket_name": custom_ticket_name
         }
 
-        #TODO:  Implement Later
-        #Return a SDTicket
-        pass
-
-    def open_ticket_for_take_out(self, user_id):
-
-        #Return a SDTicket
-        pass
+        ticket_response = self._swagger_locations_api.createTicket(location_id=self._location_id,
+                                                                   api_key=self._api_key,
+                                                                   ticket_type='take-out',
+                                                                   body=ticket_body)
+        if ticket_response.success == True:
+            return SDTicket(parent=self, location=self, ticket_id=ticket_response.ticket_id, user_id=user_id, get_values=False)
+        else:
+            raise RuntimeError('Ticket Not Created: ' + ticket_response.error)
 
     def open_ticket_for_delivery(self, user_id):
 
