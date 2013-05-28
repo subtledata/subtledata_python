@@ -21,25 +21,19 @@ class Item:
 
     def __init__(self):
         self.swaggerTypes = {
-            'description': 'str',
-            'price': 'float',
-            'name': 'str',
-            'revenue_center_id': 'int',
             'item_id': 'int',
-            'item_images': 'list[ItemImage]'
+            'instructions': 'str',
+            'modifiers': 'list[Modifier]',
+            'quantity': 'int'
 
         }
 
 
-        #Item Description
-        self.description = None # str
-        #Item Price
-        self.price = None # float
-        #Item Name
-        self.name = None # str
-        #Revenue Center ID
-        self.revenue_center_id = None # int
-        #Item ID
+        #Subtledata Item Identifier
         self.item_id = None # int
-        self.item_images = None # list[ItemImage]
+        #Extra Instructions
+        self.instructions = None # str
+        self.modifiers = None # list[Modifier]
+        #Quantity of Item
+        self.quantity = None # int
         

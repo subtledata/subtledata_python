@@ -21,7 +21,7 @@ class TableMinimal:
 
     def __init__(self):
         self.swaggerTypes = {
-            'pos_table_id': 'int',
+            'pos_table_id': 'str',
             'subtledata_id': 'int',
             'revenue_center_name': 'str',
             'name': 'str',
@@ -31,7 +31,7 @@ class TableMinimal:
 
 
         #Table Identifier
-        self.pos_table_id = None # int
+        self.pos_table_id = None # str
         #Table ID
         self.subtledata_id = None # int
         #Revenue Center Name
