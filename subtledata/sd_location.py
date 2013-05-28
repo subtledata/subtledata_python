@@ -89,15 +89,33 @@ class SDLocation(SDFirstClassObject):
         """
         return []
 
-    def open_ticket_for_take_out(self, user_id, device_id, revenue_center_id, number_of_people_in_party=1, business_expense=False, custom_ticket_name=None, return_ticket_details=False):
+    def open_ticket_for_take_out(self, user_id, device_id, revenue_center_id, number_of_people_in_party=1, business_expense=False, custom_ticket_name=None, table_id=None):
+        """
+        Open a ticket for take out
+
+        :param user_id: SubtleData User ID for order
+        :param device_id: User's associated device ID
+        :param revenue_center_id: Revenue Center for Take Out orders
+        :param number_of_people_in_party: Number of people in the party
+        :param business_expense: Whether this is a business expense
+        :param custom_ticket_name: Custom ticket name to display
+        :param table_id: Table ID to use
+        :return: SDTicket Object and Status
+        :raise: RunTimeError with error details
+        """
         ticket_body = {
             "revenue_center_id": revenue_center_id,
             "number_of_people_in_party": number_of_people_in_party,
             "user_id": user_id,
             "device_id": device_id,
-            "business_expense": business_expense,
-            "custom_ticket_name": custom_ticket_name
+            "business_expense": business_expense
         }
+
+        if custom_ticket_name != None:
+            ticket_body["custom_ticket_name"] = custom_ticket_name
+
+        if table_id is not None:
+            ticket_body['table_id'] = table_id
 
         ticket_response = self._swagger_locations_api.createTicket(location_id=self._location_id,
                                                                    api_key=self._api_key,
