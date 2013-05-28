@@ -26,6 +26,7 @@ class MenuItem:
             'alcohol_flag': 'bool',
             'display_name': 'str',
             'name': 'str',
+            'merchandise_flag': 'bool',
             'available_for_order': 'bool',
             'price': 'float',
             'description': 'str',
@@ -33,7 +34,6 @@ class MenuItem:
             'ModifierTypes': 'list[Modifiertype]',
             'item_images': 'list[ItemImage]',
             'cost': 'float',
-            'Merchandise Flag': 'bool',
             'revenue_center_id': 'int',
             'item_id': 'int',
             'local_pos_id': 'int',
@@ -52,6 +52,8 @@ class MenuItem:
         self.display_name = None # str
         #Item Name
         self.name = None # str
+        #Merchandise Flag
+        self.merchandise_flag = None # bool
         #Available For Order Flag
         self.available_for_order = None # bool
         #Item Price
@@ -64,8 +66,6 @@ class MenuItem:
         self.item_images = None # list[ItemImage]
         #Item Cost Basis
         self.cost = None # float
-        #Merchandise Flag
-        self.Merchandise Flag = None # bool
         #Revenue Center ID
         self.revenue_center_id = None # int
         #Item ID
