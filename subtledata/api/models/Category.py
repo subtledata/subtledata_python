@@ -21,8 +21,8 @@ class Category:
 
     def __init__(self):
         self.swaggerTypes = {
+            'items': 'list[MenuItemDetail]',
             'has_items': 'bool',
-            'MenuItemDetails': 'list[Menuitemdetail]',
             'instructional_text': 'str',
             'category_images': 'list[CategoryImage]',
             'category_id': 'int',
@@ -32,9 +32,9 @@ class Category:
         }
 
 
+        self.items = None # list[MenuItemDetail]
         #Category has items
         self.has_items = None # bool
-        self.MenuItemDetails = None # list[Menuitemdetail]
         #Instructional Text
         self.instructional_text = None # str
         self.category_images = None # list[CategoryImage]
