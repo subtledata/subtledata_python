@@ -216,6 +216,53 @@ class LocationsApi(object):
         return responseObject
         
         
+    def getLocationPOSMenu(self, location_id, api_key, **kwargs):
+        """Get a location's POS Menu
+
+        Args:
+            location_id, int: Subtledata Location ID (required)
+            api_key, str: Subtledata API Key (required)
+            use_cache, bool: Utilize Cached Data (optional)
+            
+        Returns: list[POSCategory]
+        """
+
+        allParams = ['location_id', 'api_key', 'use_cache']
+
+        params = locals()
+        for (key, val) in params['kwargs'].iteritems():
+            if key not in allParams:
+                raise TypeError("Got an unexpected keyword argument '%s' to method getLocationPOSMenu" % key)
+            params[key] = val
+        del params['kwargs']
+
+        resourcePath = '/locations/{location_id}/pos_menu'
+        resourcePath = resourcePath.replace('{format}', 'json')
+        method = 'GET'
+
+        queryParams = {}
+        headerParams = {}
+
+        if ('api_key' in params):
+            queryParams['api_key'] = self.apiClient.toPathValue(params['api_key'])
+        if ('use_cache' in params):
+            queryParams['use_cache'] = self.apiClient.toPathValue(params['use_cache'])
+        if ('location_id' in params):
+            replacement = str(self.apiClient.toPathValue(params['location_id']))
+            resourcePath = resourcePath.replace('{' + 'location_id' + '}',
+                                                replacement)
+        postData = (params['body'] if 'body' in params else None)
+
+        response = self.apiClient.callAPI(resourcePath, method, queryParams,
+                                          postData, headerParams)
+
+        if not response:
+            return None
+
+        responseObject = self.apiClient.deserialize(response, 'list[POSCategory]')
+        return responseObject
+        
+        
     def getMenuItem(self, location_id, item_id, api_key, **kwargs):
         """Get details about a menu item
 
