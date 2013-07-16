@@ -1,6 +1,7 @@
 __author__ = 'gsibble'
 
 from base_types import SDFirstClassObject
+from sd_menu_item import SDMenuItem
 
 class SDPOSMenu(SDFirstClassObject):
 
@@ -30,15 +31,18 @@ class SDPOSMenu(SDFirstClassObject):
         self._category_id_dict = {}
 
         for category in swagger_pos_menu:
-            self._category_name_dict[category.pos_category_name] = category
-            self._category_id_dict[category.pos_category_id] = category
 
             #Store the items
-            for item in category.items:
+            for index, item in enumerate(category.items):
                 setattr(item, 'category', category.pos_category_name)
-                self.items.append(item)
-                self._item_name_dict[item.name] = item
-                self._item_id_dict[item.item_id] = item
+                sd_item = SDMenuItem(parent=self, location=self._location, swagger_menu_item=item, use_cache=self._use_cache)
+                self.items.append(sd_item)
+                self._item_name_dict[item.name] = sd_item
+                self._item_id_dict[item.item_id] = sd_item
+                category.items[index] = sd_item
+
+            self._category_name_dict[category.pos_category_name] = category
+            self._category_id_dict[category.pos_category_id] = category
 
     def get_category(self, category_id=None, category_name=None):
 

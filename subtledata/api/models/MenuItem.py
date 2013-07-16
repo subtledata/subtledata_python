@@ -29,12 +29,13 @@ class MenuItem:
             'merchandise_flag': 'bool',
             'available_for_order': 'bool',
             'price': 'float',
-            'description': 'str',
+            'local_modifier_categories': 'list[LocalModifierCategorie]',
             'UPC': 'str',
-            'ModifierTypes': 'list[Modifiertype]',
+            'mapped_modifier_categories': 'list[MappedModifierCategorie]',
             'item_images': 'list[ItemImage]',
             'cost': 'float',
             'revenue_center_id': 'int',
+            'description': 'str',
             'item_id': 'int',
             'local_pos_id': 'int',
             'out_of_stock_flag': 'bool'
@@ -58,16 +59,17 @@ class MenuItem:
         self.available_for_order = None # bool
         #Item Price
         self.price = None # float
-        #Item Description
-        self.description = None # str
+        self.local_modifier_categories = None # list[LocalModifierCategorie]
         #Item UPC
         self.UPC = None # str
-        self.ModifierTypes = None # list[Modifiertype]
+        self.mapped_modifier_categories = None # list[MappedModifierCategorie]
         self.item_images = None # list[ItemImage]
         #Item Cost Basis
         self.cost = None # float
         #Revenue Center ID
         self.revenue_center_id = None # int
+        #Item Description
+        self.description = None # str
         #Item ID
         self.item_id = None # int
         #Item POS ID
