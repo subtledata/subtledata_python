@@ -2,6 +2,7 @@ __author__ = 'gsibble'
 
 from base_types import SDFirstClassObject
 from sd_menu import SDMenu
+from sd_pos_menu import SDPOSMenu
 from sd_table import SDTable
 from sd_ticket import SDTicket
 from sd_collections_tables import SDTableCollection
@@ -68,6 +69,14 @@ class SDLocation(SDFirstClassObject):
         self._swagger_menu = self._swagger_locations_api.getLocationMenu(self._location_id, self._api_key,
                                                                          use_cache=use_cache)
 
+    def update_pos_menu(self, use_cache=True):
+
+        if not self._use_cache:
+            use_cache = False
+
+        self._swagger_pos_menu = self._swagger_locations_api.getLocationPOSMenu(self._location_id, self._api_key,
+                                                                                use_cache=use_cache)
+
     @property
     def menu(self):
         """
@@ -79,6 +88,14 @@ class SDLocation(SDFirstClassObject):
             self.update_menu()
 
         return SDMenu(self, self._swagger_menu)
+
+    @property
+    def pos_menu(self):
+
+        if not hasattr(self, '_swagger_pos_menu'):
+            self.update_pos_menu()
+
+        return SDPOSMenu(self, self._swagger_pos_menu)
 
     @property
     def open_tables(self):
